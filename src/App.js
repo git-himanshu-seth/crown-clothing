@@ -8,9 +8,11 @@ import "./pages/homepage/homepage.style.scss";
 
 import ShopComponent from "./pages/shop/shop.component";
 
+import Header from "../src/components/header/header.component";
 function App() {
   return (
     <div>
+      <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/shop" component={ShopComponent} />
