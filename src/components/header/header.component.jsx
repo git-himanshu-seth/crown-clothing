@@ -4,6 +4,9 @@ import './header.style.scss';
 import {ReactComponent as Logo} from '../../assets/crownicon/crown.svg';
 import {auth} from '../../firebase/firebase.utli';
 import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect'
+import {selectCartHidden} from '../../redux/cart/cart.selector'
+import{selectCurrentUser} from'../../redux/user/user.selector'
 import CartIcon from'../cart-icon/cart-icon';
 import CratDropdown from '../cart-dropdown/cart-dropdown.component';
 const Header=({currentUser ,hidden})=>{
@@ -22,7 +25,7 @@ const Header=({currentUser ,hidden})=>{
     <div className='option' onClick={ ()=>auth.signOut()}> SIGN OUT</div>
 :(
 
-<Link className="option" to='/'>
+<Link className="option" to='/sign'>
     SIGN IN
 </Link>
 
@@ -37,7 +40,8 @@ const Header=({currentUser ,hidden})=>{
     </div>
 )
 }
-const mapStateToProps=({user:{currentUser} ,cart:{hidden}})=>({
-  currentUser ,hidden
+const mapStateToProps=createStructuredSelector({
+  currentUser:selectCurrentUser,
+  hidden:selectCartHidden
 })
 export default connect(mapStateToProps)(Header);
