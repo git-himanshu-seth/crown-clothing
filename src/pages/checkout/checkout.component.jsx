@@ -2,6 +2,9 @@ import React from 'react'
 import  CheckoutItem from'../../components/checkout-item/checkout-item.component'
 import { connect } from 'react-redux';
 import {createStructuredSelector} from'reselect'
+
+import StripeCheckoutButton from'../../components/stripe-button/stripe-button.component'
+
 import './checkout.style.scss'
 import {selectTotalCost ,selectCartItems} from'../../redux/cart/cart.selector'
 const CheckOut=({total , cartItem})=>(
@@ -36,7 +39,9 @@ Remove
         <div className='total'> 
 <span>TOTAL:${total}</span>
 </div>
-
+<div className='test-warning'> *please use the following test credit card for payments* 
+<br/> VISA, 4532864593931965, EXP DATE 10/2021, CVV126</div>
+<StripeCheckoutButton price={total}/>
      </div>
 )
 
