@@ -4,18 +4,17 @@ import{connect} from 'react-redux'
 
 import CollectionItem from'../../components/collection-item/collection-item.component';
 import{addItem} from'../../redux/cart/cart.action'
-import './collection-preview.style.scss';
-
+import{CollectionPreviewContainer,TitleContainer,PreviewContainer} from './collection-preview.style'
 
 const CollectionPreview=({title , items})=>(
-    (<div className='collection-preview'>
-<h1 className='title'> {title.toUpperCase()}</h1>
-<div className='preview'>
+    (<CollectionPreviewContainer>
+<TitleContainer> {title.toUpperCase()}</TitleContainer>
+<PreviewContainer>
 {items.filter((item, idx)=>idx<4).map((item)=>(
     <CollectionItem key={item.id} item={item}/> ))}
 
-</div>
-    </div>
+</PreviewContainer>
+    </CollectionPreviewContainer>
 ))
 
 const mapDispatchToProps=(dispatch)=>({
