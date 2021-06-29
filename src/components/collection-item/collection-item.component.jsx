@@ -13,7 +13,7 @@ import{addItem} from'../../redux/cart/cart.action'
 
 const CollectionItem =({item, addItem})=>{
     const{id ,name,imageUrl ,price,}=item;
-    console.log('items',item);
+    
     return(
     <CollectionItemContainer key={id}>
         <BackgroundImage className='image' imageUrl={imageUrl}/>
